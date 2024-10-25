@@ -1,0 +1,8 @@
+player's name - quantity played
+Akbar, 3
+Genald, 5
+
+[ "Akbar, 3", "Genald, 5" ]
+"akbar" "3"
+3 if loses +1
+"akbar " + str(3) = "akbar 4" -> [ "Akbar, 4", "Genald, 5" ]

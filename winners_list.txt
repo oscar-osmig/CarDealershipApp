@@ -1,0 +1,6 @@
+player, date, amount of moves, moves map 0 means no move
+Akbar, 2024-10-25
+Genald, 2024-10-25
+Mordecai, 2024-10-25
+osmig, 2024-10-25, 4, [ 1 3 3 3 0 ]
+maaike, 2024-10-25, 4, [ 1 2 2 2 0 ]

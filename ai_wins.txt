@@ -1,0 +1,9 @@
+ai wins over player, localdate, amount of moves, moves map
+ai wins over akbar, 2024-10-25, 3, [2 2 1 0 0 ]
+ai wins over cesar, 2024-10-25, 26, [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ]
+ai wins over cesar, 2024-10-25, 6, [3 2 2 1 1 1 ]
+ai wins over joazari, 2024-10-25, 12, [3 2 2 1 1 1 3 1 1 1 2 3 ]
+ai wins over osmig, 2024-10-25, 38, [3 2 2 1 1 1 3 1 1 1 2 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 2 ]
+ai wins over osmgi, 2024-10-25, 26, [3 2 1 1 1 1 2 3 1 2 2 3 2 1 2 1 3 1 2 1 2 3 1 1 2 1 ]
+ai wins over osmig, 2024-10-25, 26, [3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 ]
+ai wins over osmig, 2024-10-25, 26, [2 1 2 2 2 2 2 2 2 2 3 2 1 2 1 2 3 2 1 3 2 1 1 1 2 1 ]
