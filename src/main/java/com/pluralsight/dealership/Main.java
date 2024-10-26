@@ -45,7 +45,7 @@ public class Main {
             switch (choice) {
                 case "1" -> UserInterface.findPriceRange(); // done
                 case "2" -> UserInterface.findMakeModel(); // done
-                case "3" -> UserInterface.findYearRange(); //TODO: do this
+                case "3" -> UserInterface.findYearRange(); // done
                 case "4" -> UserInterface.findColor(); // done
                 case "5" -> UserInterface.findMileageRange(); //TODO: do this
                 case "6" -> UserInterface.findType(); // done

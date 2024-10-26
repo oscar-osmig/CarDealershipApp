@@ -47,7 +47,20 @@ public class UserInterface {
         }
     }
 
-    public static void findMileageRange() {
+    public static void findMileageRange() throws IOException {
+        List<Vehicle> vehicles = Dealership.getAllVehicles();
+        System.out.print("\nMinimum miles: ");
+        double minYear = scanner.nextDouble();
+        System.out.print("Maximum miles: ");
+        double maxYear = scanner.nextDouble();
+
+        for (Vehicle car : vehicles) {
+            if(car.getOdometer() >= minYear && car.getOdometer() <= maxYear){
+                displayVehicle(counter, car);
+                counter++;
+            }
+        }
+
     }
 
     public static void findColor() throws IOException {
