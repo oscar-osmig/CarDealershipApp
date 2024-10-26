@@ -47,10 +47,10 @@ public class Main {
                 case "2" -> UserInterface.findMakeModel(); // done
                 case "3" -> UserInterface.findYearRange(); // done
                 case "4" -> UserInterface.findColor(); // done
-                case "5" -> UserInterface.findMileageRange(); //TODO: do this
+                case "5" -> UserInterface.findMileageRange(); // done
                 case "6" -> UserInterface.findType(); // done
                 case "7" -> UserInterface.listAll(); // done
-                case "8" -> UserInterface.addVehicle(); //TODO: do this
+                case "8" -> UserInterface.addVehicle(); // done
                 case "9" -> UserInterface.removeVehicle(); //TODO: do this
                 case "99" -> UserInterface.quit(); // done
                 default -> System.out.println("Please choose and available option . . . ");

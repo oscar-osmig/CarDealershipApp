@@ -1,5 +1,8 @@
 package com.pluralsight.dealership;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +27,32 @@ public class UserInterface {
        //List<Vehicle> vehicles = Dealership.getVehicleByPrice();
     }
 
-    public static void addVehicle() {
+    public static void addVehicle() throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("cars_inventory.txt", true));
+        System.out.println("\nEnter the following below ⬇️");
+        System.out.print("\nvin: ");
+        String vin = scanner.nextLine();
+        System.out.print("year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("make: ");
+        String make = scanner.nextLine();
+        System.out.print("model: ");
+        String model = scanner.nextLine();
+        System.out.print("type: ");
+        String vehicleType = scanner.nextLine();
+        System.out.print("color: ");
+        String color = scanner.nextLine();
+        System.out.print("odometer: ");
+        int odometer = scanner.nextInt();
+        System.out.print("price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+        Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
+        bufferedWriter.write("\n" + vin + "|"+ year + "|"+ make + "|"+ model + "|"+ vehicleType + "|" + color + "|" + odometer + "|"+ price);
+        bufferedWriter.close();
+        System.out.println("\n* You added a new vehicle successfully *");
+
     }
 
     public static void listAll() throws IOException {
