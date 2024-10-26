@@ -12,7 +12,7 @@ public class Main {
                \s
                 1. Find vehicles with a price range \
                \s
-                2. Find vehicles by make / model\
+                2. Find vehicles by make && model\
                \s
                 3. Find vehicles by year range \
                \s
@@ -33,9 +33,7 @@ public class Main {
                """);
     }
 
-
-    public static void main(String[] args) throws IOException {
-
+    public static void runApp() throws IOException {
         do {
 
             board();
@@ -51,11 +49,20 @@ public class Main {
                 case "6" -> UserInterface.findType(); // done
                 case "7" -> UserInterface.listAll(); // done
                 case "8" -> UserInterface.addVehicle(); // done
-                case "9" -> UserInterface.removeVehicle(); //TODO: do this
+                case "9" -> UserInterface.removeVehicle(); // done
                 case "99" -> UserInterface.quit(); // done
-                default -> System.out.println("Please choose and available option . . . ");
+                default -> {
+                    System.out.println("\nPlease choose and available option . . . ");
+                    runApp();
+                    break;
+                }
             }
         }while (run == UserInterface.quit());
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        runApp();
     }
 
 

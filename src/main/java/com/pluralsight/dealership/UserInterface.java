@@ -13,6 +13,7 @@ public class UserInterface {
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean isInFile = true;
 
+    // TODO: when done ask if want to continue if not close app
     public static void displayVehicle(int counter, Vehicle vehicle){
         System.out.print("\n\n----- Vehicle " + counter + " -----" +
                 "\n vin: " + vehicle.getVin() +
@@ -79,7 +80,7 @@ public class UserInterface {
         */
 
     }
-
+    // TODO: make sure vin input is not the same as any of the cars in file
     public static void addVehicle() throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("cars_inventory.txt", true));
         System.out.println("\nEnter the following below ⬇️");
