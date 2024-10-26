@@ -62,7 +62,19 @@ public class UserInterface {
         }
     }
 
-    public static void findYearRange() {
+    public static void findYearRange() throws IOException {
+        List<Vehicle> vehicles = Dealership.getAllVehicles();
+        System.out.print("\nMinimum year: ");
+        double minYear = scanner.nextDouble();
+        System.out.print("Maximum year: ");
+        double maxYear = scanner.nextDouble();
+
+        for (Vehicle car : vehicles) {
+            if(car.getYear() >= minYear && car.getYear() <= maxYear){
+                displayVehicle(counter, car);
+                counter++;
+            }
+        }
     }
 
     public static boolean quit() {
