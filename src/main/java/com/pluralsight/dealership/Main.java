@@ -54,7 +54,6 @@ public class Main {
                 default -> {
                     System.out.println("\nPlease choose and available option . . . ");
                     runApp();
-                    break;
                 }
             }
         }while (run == UserInterface.quit());

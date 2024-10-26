@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -13,7 +14,8 @@ public class UserInterface {
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean isInFile = true;
 
-    // TODO: when done ask if want to continue if not close app
+
+
     public static void displayVehicle(int counter, Vehicle vehicle){
         System.out.print("\n\n----- Vehicle " + counter + " -----" +
                 "\n vin: " + vehicle.getVin() +
@@ -27,7 +29,7 @@ public class UserInterface {
     }
 
     public static void removeVehicle() throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.txt"));
+
         List<Vehicle> vehiclesInventory = Dealership.getAllVehicles();
         List<Vehicle> newCarInventory = new ArrayList<>();
         System.out.print("Please enter vin # of vehicle to delete: ");
@@ -45,6 +47,7 @@ public class UserInterface {
 
             }else {
                 isInFile = true;
+                break;
             }
         }
 
@@ -58,7 +61,7 @@ public class UserInterface {
                     newCarInventory.add(vehicle);
                 }
             }
-
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("cars_inventory.txt"));
             bufferedWriter.write("D & B Used Cars|111 Old Benbrook Rd|817-555-5555");
             for(Vehicle vehicle : newCarInventory){
                 Vehicle car = new Vehicle(vehicle.getVin(),vehicle.getYear(), vehicle.getMake(), vehicle.getModel(),
@@ -68,9 +71,14 @@ public class UserInterface {
                         car.getModel() + "|" + car.getVehicleType() + "|" + car.getColor() + "|" + car.getOdometer() + "|" +
                         car.getPrice());
             }
-            System.out.println("Vehicle with vin #" + vin + " has been deleted from database");
             bufferedWriter.close();
+            System.out.println("Vehicle with vin #" + vin + " has been deleted from database");
 
+            System.out.print("\n\nPress <enter> to go back or enter 1 to remove another car ");
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("1")){
+                Main.runApp();
+            }else { Main.runApp();}
         }
         /*
             // Testing if it is not adding the unwanted vehicle to our new array
@@ -107,41 +115,63 @@ public class UserInterface {
         bufferedWriter.close();
         System.out.println("\n* You added a new vehicle successfully *");
 
+        System.out.print("\n\nPress <enter> to go back or enter 1 to add another car ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            addVehicle();
+        }else { Main.runApp();}
+
     }
 
     public static void listAll() throws IOException {
         List<Vehicle> vehicles = Dealership.getAllVehicles();
+        counter = 1;
         for (Vehicle value : vehicles) {
             displayVehicle(counter, value);
             counter++;
         }
+        System.out.println("\n\npress <enter> to go back ");
+        Main.runApp();
+
     }
 
     public static void findType() throws IOException {
         List<Vehicle> vehicles = Dealership.getAllVehicles();
         System.out.print("\nWhat type: ");
         String type = scanner.nextLine();
+        counter = 1;
         for (Vehicle car : vehicles) {
             if(car.getVehicleType().equalsIgnoreCase(type)){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findType();
+        }else { Main.runApp();}
+
     }
 
     public static void findMileageRange() throws IOException {
+        counter = 1;
         List<Vehicle> vehicles = Dealership.getAllVehicles();
         System.out.print("\nMinimum miles: ");
         double minYear = scanner.nextDouble();
         System.out.print("Maximum miles: ");
         double maxYear = scanner.nextDouble();
-
         for (Vehicle car : vehicles) {
             if(car.getOdometer() >= minYear && car.getOdometer() <= maxYear){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findMileageRange();
+        }else { Main.runApp();}
 
     }
 
@@ -149,12 +179,19 @@ public class UserInterface {
         List<Vehicle> vehicles = Dealership.getAllVehicles();
         System.out.print("\nColor of choice: ");
         String color = scanner.nextLine();
+        counter = 1;
         for (Vehicle car : vehicles) {
             if(car.getColor().equalsIgnoreCase(color)){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findColor();
+        }else { Main.runApp();}
+
     }
 
     public static void findYearRange() throws IOException {
@@ -163,13 +200,19 @@ public class UserInterface {
         double minYear = scanner.nextDouble();
         System.out.print("Maximum year: ");
         double maxYear = scanner.nextDouble();
-
+        counter = 1;
         for (Vehicle car : vehicles) {
             if(car.getYear() >= minYear && car.getYear() <= maxYear){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findYearRange();
+        }else { Main.runApp();}
     }
 
     public static boolean quit() {
@@ -182,13 +225,19 @@ public class UserInterface {
         double minPrice = scanner.nextDouble();
         System.out.print("Maximum price: ");
         double maxPrice = scanner.nextDouble();
-
+        scanner.nextLine();
+        counter = 1;
         for (Vehicle car : vehicles) {
             if(car.getPrice() >= minPrice && car.getPrice() <= maxPrice){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findPriceRange();
+        }else { Main.runApp();}
 
     }
 
@@ -198,11 +247,17 @@ public class UserInterface {
         String make = scanner.nextLine();
         System.out.print("Model: ");
         String model = scanner.nextLine();
+        counter = 1;
         for (Vehicle car : vehicles) {
             if(car.getMake().equalsIgnoreCase(make) && car.getModel().equalsIgnoreCase(model)){
                 displayVehicle(counter, car);
                 counter++;
             }
         }
+        System.out.print("\n\nPress <enter> to go back or enter 1 to find other cars ");
+        String answer = scanner.nextLine();
+        if (answer.equalsIgnoreCase("1")){
+            findMakeModel();
+        }else { Main.runApp();}
     }
 }
