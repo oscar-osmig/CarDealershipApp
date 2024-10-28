@@ -15,9 +15,6 @@ public class UserInterface
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean isInFile = true;
 
-    public void goBack(){
-        System.out.println("you can alway <enter> 0 to go back");
-    }
 
     public static void displayVehicle(int counter, Vehicle vehicle){
         System.out.print("\n\n----- Vehicle " + counter + " -----" +
@@ -91,7 +88,6 @@ public class UserInterface
         */
 
     }
-    // TODO: make sure vin input is not the same as any of the cars in file
 
     static boolean vinInFile = false;
     public static boolean checkVinDuplicate(String vin) throws IOException {
@@ -160,6 +156,7 @@ public class UserInterface
             counter++;
         }
         System.out.println("\n\npress <enter> to go back ");
+        String back = scanner.nextLine();
         Main.runApp();
 
     }
