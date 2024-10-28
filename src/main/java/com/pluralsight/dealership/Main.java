@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     public static boolean run = true;
+
     public static void board(){
         System.out.print(
                """

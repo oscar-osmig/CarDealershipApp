@@ -9,12 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class UserInterface {
+public class UserInterface
+{
     private static int counter = 1;
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean isInFile = true;
 
-
+    public void goBack(){
+        System.out.println("you can alway <enter> 0 to go back");
+    }
 
     public static void displayVehicle(int counter, Vehicle vehicle){
         System.out.print("\n\n----- Vehicle " + counter + " -----" +
@@ -89,11 +92,35 @@ public class UserInterface {
 
     }
     // TODO: make sure vin input is not the same as any of the cars in file
+
+    static boolean vinInFile = false;
+    public static boolean checkVinDuplicate(String vin) throws IOException {
+        List<Vehicle> vehicles = DealershipFileManager.getCarInventory();
+        for (Vehicle car: vehicles){
+            if (car.getVin().equalsIgnoreCase(vin)){
+                vinInFile = true;
+                break;
+            }else {
+                vinInFile = false;
+            }
+        }
+        return  vinInFile;
+    }
+
     public static void addVehicle() throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("cars_inventory.txt", true));
+
         System.out.println("\nEnter the following below ⬇️");
-        System.out.print("\nvin: ");
-        String vin = scanner.nextLine();
+        String vin;
+        do {
+            System.out.print("\nvin: ");
+            vin = scanner.nextLine();
+            if (checkVinDuplicate(vin) == false) {
+                break;
+            }
+            System.out.println("~ Vehicle vin #" + vin + " has already been entered ~");
+        } while (checkVinDuplicate(vin) == true);
+
         System.out.print("year: ");
         int year = scanner.nextInt();
         scanner.nextLine();
@@ -111,15 +138,17 @@ public class UserInterface {
         double price = scanner.nextDouble();
         scanner.nextLine();
         Vehicle vehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
-        bufferedWriter.write("\n" + vin + "|"+ year + "|"+ make + "|"+ model + "|"+ vehicleType + "|" + color + "|" + odometer + "|"+ price);
+        bufferedWriter.write("\n" + vin + "|" + year + "|" + make + "|" + model + "|" + vehicleType + "|" + color + "|" + odometer + "|" + price);
         bufferedWriter.close();
         System.out.println("\n* You added a new vehicle successfully *");
 
         System.out.print("\n\nPress <enter> to go back or enter 1 to add another car ");
         String answer = scanner.nextLine();
-        if (answer.equalsIgnoreCase("1")){
+        if (answer.equalsIgnoreCase("1")) {
             addVehicle();
-        }else { Main.runApp();}
+        } else {
+            Main.runApp();
+        }
 
     }
 
@@ -258,6 +287,6 @@ public class UserInterface {
         String answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("1")){
             findMakeModel();
-        }else { Main.runApp();}
+        }else { Main.runApp();  }
     }
 }
